@@ -1,0 +1,238 @@
+﻿@model List<umekou.Models.CardContentData>
+@{
+    ViewBag.Title = "うめ校 | 共感から協働へ ";
+    Layout = "~/Views/Shared/_LayoutUmekou.cshtml";
+}
+@section css{
+    <link href="@Url.Content("~/Scripts/plugin/jquery.zrssfeed.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Card_Style.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css")" rel="stylesheet" type="text/css" />
+   @* <link href="@Url.Content("~/Content/ULStyle.css")" rel="stylesheet" type="text/css" />*@
+}
+@section script{
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.8.20.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ui/jquery.ui.draggable.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/plugin/jquery.zrssfeed.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/knockout-2.1.0.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/MicrosoftAjax.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/MicrosoftMvcAjax.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/MicrosoftMvcValidation.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/plugin/signalr/jquery-1.8.3.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/plugin/signalr/json2.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/plugin/signalr/jquery.signalR-1.1.2.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/signalr/hubs")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/plugin/jquery.shapeshift.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+    //==================================================
+    //ロード時処理
+    //==================================================
+     if (document.all) {
+        window.attachEvent("onload", function () {
+            initProcess();
+        });
+    }
+    else {
+        window.addEventListener("load", function () {
+            initProcess();
+        }, false);
+    }
+
+
+    //==================================================
+    //shapeShift設定と実行
+    //==================================================
+    function set_shapeshift(){}
+
+
+
+    //==================================================
+    //編集画面を別ウィンドウで表示する
+    //==================================================
+     function showEditDialog() {
+        window.open("@Url.Action("Editor", "Top", null, null)", '記入', 'width=910, height=650, menubar=no, toolbar=no, scrollbars=yes,resizable=yes,location=no');
+    }
+
+    //==================================================
+    //初回処理
+    //==================================================
+    function initProcess() {
+ 
+             ///////////////////
+              //モデル定義
+             function news(data) {
+                var self=this;
+                self.id=data.id;
+                self.text=ko.observable(data.text);
+                self.name = data.name;
+                self.reg_date=data.disp_reg_date;
+                self.disp_day=data.disp_day_title;
+              }
+              ///////////////////
+
+
+         var dataHub = $.connection.umekouHub;
+
+        //=============================
+        //受信＿新規メッセージ
+        //=============================
+        dataHub.client.addNewMessageToPage = function (data) {
+           loaca_view_model.newsList.unshift(data);
+        };
+
+
+        dataHub.client.removeDispData = function (data) {
+             alert("受信；"+data);
+        };
+
+         //=============================
+        //受信＿削除メッセージ
+        //=============================
+        dataHub.client.removeDataMessageToPage = function (id) {
+            loaca_view_model.removeDataFromArray(id);
+        };
+
+        $.connection.hub.start().done(function () {});
+
+
+          ///////////////////
+          //ビューモデルの定義
+          function viewModel(){
+
+                var self=this ;
+
+                self.newsList= ko.observableArray();
+
+                //初回データ取得
+                $.getJSON("@Url.Action("getData_JSON", "Top", null, null) ", function (allData) {
+                    var mappedTasks = $.map(allData, function (item) { return item });
+                    self.newsList(mappedTasks);
+                     set_shapeshift();
+                }); 
+                 ///////////////////
+               
+               
+                //削除処理
+                 self.removeData = function(task) {
+                 if(false ==window.confirm('この記事を削除します。よろしいですか？' ))return;
+                     $.getJSON("@Url.Action("removeData_JSON", "Top", null, null)",
+                     {
+                         'id':task.raw.id
+                     }
+                 , function (data) {
+                     if (data.result == true ) {
+                             dataHub.server.removeData(task.raw.id);
+                     } else {
+                         alert(data.errMsg);
+                     }
+                 });
+
+                  };
+                   ///////////////////
+
+                  //編集処理
+                 self.editData = function(task) {
+                   window.open("@Url.Action("Editor_ForEdit", "Top", null, null)" + "/" + task.raw.id, '記入', 'width=910, height=650, menubar=no, toolbar=no, scrollbars=yes,resizable=yes,location=no' );
+                  };
+
+                  //非表示処理
+                   self.removeDataFromArray = function(id) {
+                    this.newsList.remove(function (item) {
+                    if(item.raw.id==id)
+                    {
+                        return true ;
+                    }
+                    } );
+                     set_shapeshift();    
+                }.bind( this);
+                 ///////////////////
+
+                //更新処理
+                self.updateDataFromArray= function(data){
+                    var seat = ko.utils.arrayFirst(this .newsList(), function(currentSeat) {
+                        return currentSeat.id == data.id;
+                    });
+                    if(seat)
+                    {
+                        seat.text(data.edit_data);
+                        set_shapeshift();
+                    }
+                };
+                 ///////////////////
+
+                 //データ表示アニメーション
+                self.showData= function(elm){
+                   $(elm).slideDown( "slow", function (){set_shapeshift();});
+                };
+                 ///////////////////
+
+
+                 //データ削除時アニメーション
+                self.hideData= function(elm){
+                   $(elm).fadeOut( "slow", function (){set_shapeshift();});
+                };
+
+                 ///////////////////
+              }
+              ///ViewMOdel定義ここまで
+
+         var loaca_view_model=new viewModel();
+          ko.applyBindings(loaca_view_model);
+
+
+        
+
+       }
+
+
+
+
+
+    
+    </script>
+}
+
+
+
+
+
+
+
+<input type="button" onclick="showEditDialog();" id="sendmessage" value="編集" />
+@*===================================
+ ▼カード一覧
+ =====================================*@
+<div class="container" data-bind="template: {foreach: newsList}" style="margin-top: 20px;">
+    <div class="content">
+    <div class="inner_border">
+     <div class="inner_content">
+        <p class="text" data-bind="html: edit_data">
+        </p>
+        <span class="overlay"></span>
+        <p data-bind="html: name">
+        </p>
+        <ul class="commonUL" style="margin-top: 15px;">
+            <li style=""><a href="#" data-bind="click: $parent.editData">編集</a></li>
+            <li style="margin-left:10px;"><a href="#" data-bind="click: $parent.removeData">削除</a></li>
+        </ul>
+        </div>
+    </div>
+    </div>
+</div>
+@* <div style="background-color: #F5D500; border: 1px dotted silver; width: 105px; height: 96px;
+        font-size: 10px;">
+        <img style="cursor:pointer;"
+     onclick='location.href = "http://www.facebook.com/umekou.since2010'
+                    onmouseover="this.src='@Url.Content("~/img/icon/facebook_.gif")'" 
+                    onmouseout="this.src='@Url.Content("~/img/icon/facebook.gif")'"
+                    src="@Url.Content("~/img/icon/facebook.gif")" alt="うめ校フェイスブック" />
+    </div>
+    <div style="background-color: #F5D500; border: 1px dotted silver; width: 200px; height: 40px;
+        font-size: 10px;">
+        <img style="cursor:pointer;"
+                    src="@Url.Content("~/img/icon/banner_ecoclub.gif")" alt="青梅エコクラブバナー" />
+    </div>
+    <div style="background-color: #FFF; border: 1px dotted silver; width: 200px; height: 40px;
+        font-size: 10px; color: Gray;">
+        <img style="cursor:pointer;margin-top:2px;"
+                    src="@Url.Content("~/img/icon/banner_towntip.gif")" alt="おうめタウンチップバナー" />
+    </div>*@

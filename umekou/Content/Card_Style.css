@@ -1,0 +1,41 @@
+﻿
+
+
+div.content
+{
+    margin:10px;
+    overflow:hidden;
+    background-color:White;
+
+width:430px;
+border:1px solid #ccc;
+border-radius:5px;
+
+line-height:1.6em;
+z-index:0;
+}
+.inner_border
+{ 
+    margin:10px;
+    border:2px solid #aaaaaa;   
+}
+.inner_content
+{
+ margin:20px;   
+}
+.inner_border img {
+    max-width: 200px !important;
+    height: auto !important;
+
+}
+
+
+.container {
+  position: relative;
+  width: 100%;
+  margin-left:20px;
+  color:Gray;
+  
+}
+
+

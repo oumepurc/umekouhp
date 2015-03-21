@@ -1,0 +1,505 @@
+﻿/*リセット*/
+ul,li
+{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+ 
+ 
+ 
+
+/*========================================
+新規登録用UL
+ 
+========================================*/
+ 
+.addAreaUL
+{
+    zoom: 1;
+    overflow: hidden;
+    
+    
+}
+/*clearfix*/
+.addAreaUL:after
+{
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0px;
+    visibility: hidden;
+    font-size: 0;
+}
+ 
+.addAreaUL li
+{
+    overflow:hidden;
+}
+ 
+.addAreaUL .inputLi
+{
+    background-position: left center;
+    background-image: url('../img/Note-Add.png');
+    background-repeat: no-repeat;
+    padding-left: 20px;
+}
+ 
+/*liの中のUL*/
+.addAreaUL li ul
+{
+    zoom: 1;
+    overflow: hidden;
+ 
+}
+/*clearfix*/
+.addAreaUL li ul:after
+{
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0px;
+    visibility: hidden;
+    font-size: 0;
+}
+.addAreaUL li ul li
+{
+    float:left;
+    display:inline;
+    margin-right:10px;
+}
+ 
+ 
+ 
+/*========================================
+検索欄用UL
+ 
+========================================*/
+ 
+.searchAreaUL
+{
+    font-size:10px;
+    zoom: 1;
+    overflow: hidden;
+    border: 1px solid gray;
+    padding: 5px;
+    /*background-color: #e4d0af;*/
+     /*color:#9c7533;*/
+    background-color: #b8d9e7;
+    color:#3b8eb2;
+    
+}
+/*clearfix*/
+.searchAreaUL:after
+{
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0px;
+    visibility: hidden;
+    font-size: 0;
+}
+ 
+.searchAreaUL li
+{
+    overflow:hidden;
+}
+ 
+.searchAreaUL .titleLi
+{
+    background-position: left center;
+    background-image: url('../img/Search.png');
+    background-repeat: no-repeat;
+    padding-left: 20px;
+}
+ 
+.searchAreaUL .titleLi_yajirusi
+{
+    background-position: left center;
+    background-image: url('../img/migi_yajirusi_8_10.png');
+    background-repeat: no-repeat;
+    padding-left: 20px;
+    color: #666666;
+}
+ 
+
+/*liの中のUL*/
+.searchAreaUL li ul
+{
+    zoom: 1;
+    overflow: hidden;
+ 
+}
+/*clearfix*/
+.searchAreaUL li ul:after
+{
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0px;
+    visibility: hidden;
+    font-size: 0;
+}
+.searchAreaUL li ul li
+{
+    float:left;
+    display:inline;
+ 
+}
+ 
+/*コンテンツ文字部分*/
+.searchAreaUL .contentSpan
+{
+    font-weight:bold;
+    color:#FF6600;
+}
+ 
+.search_txt_style
+{
+ font-size:10px;
+ color:FF6600;   
+}
+ 
+.open
+{
+    background-image: url('../img/Add Square_blue.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left:20px;
+    
+    color:#1788c9;
+     text-decoration:underline;
+ 
+    cursor:pointer;
+}
+.open:hover
+{
+    text-decoration:none;
+    
+}
+ 
+.close
+{
+    background-image: url('../img/minusSquare.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 20px;
+    color: #1788c9;
+    text-decoration: underline;
+    cursor: pointer;
+}
+ 
+/*========================================
+汎用UL
+ 
+========================================*/
+ 
+ul.commonUL
+{
+    zoom: 1;
+    overflow: hidden;
+    
+}
+/*clearfix*/
+ul.commonUL:after
+{
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0px;
+    visibility: hidden;
+    font-size: 0;
+}
+ 
+ul.commonUL li
+{
+    overflow:hidden;
+    float:left;
+    display:inline;
+    margin-right:1px;
+}
+ 
+ 
+ 
+/*========================================
+ページングUL
+========================================*/
+ul.pageNav {
+ margin-top:13px;
+ margin-bottom:5px;
+ padding: 0px 0px 0px;
+ 
+ text-align: left;
+ font-size:10px;
+}
+ 
+ul.pageNav li {
+ display: inline;
+ margin: 0px;
+ padding: 0;
+}
+ 
+ul.pageNav li .non_link_span
+{
+ display: inline-block;
+ margin-bottom: 0px;
+ padding: 1px 5px;
+ background-color: #909090;
+    background-image: url('../img/back_gray.jpg');
+    background-repeat: repeat-x;
+    
+ color:White;
+ border: 1px solid #aaa;
+ text-decoration: none;
+ vertical-align: middle;
+}
+ 
+ul.pageNav li .page_span {
+ display: inline-block;
+ margin-bottom: 0px;
+ padding: 1px 5px;
+ background: #fff;
+ border: 1px solid #aaa;
+ text-decoration: none;
+ vertical-align: middle;
+ cursor:pointer;
+}
+ 
+ul.pageNav li .page_span:hover {
+ background: gray;
+ color:White;
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+/*==============================================================
+ カレンダー一覧用
+ 
+
+ 作成日：2011/01/17 T.Ishimaru
+ 更新日：
+ 
+================================================================*/
+ 
+ 
+ 
+
+/*============================================================
+  ベース部分
+============================================================*/
+.CalendarULTable
+{
+    margin: 0px;
+    font-family: 'ＭＳ Ｐゴシック' , Arial, sans-serif;
+    /*background-color: #FEEDCD;*/
+    background-color:#FFFFFF;
+}
+.CalendarULTable *{
+     margin:0;
+ padding:0;
+ list-style:none;
+  border:0;
+  
+}
+ 
+.CalendarULTable img
+{
+    line-height:0;
+ vertical-align:bottom;
+ margin:0;
+ padding:0;
+ 
+
+}
+ 
+
+.CalendarULTable ul,li
+{
+    margin:0;
+ padding:0;
+ list-style:none;
+}
+ 
+ 
+ 
+ 
+ 
+/*データ行====================*/
+.CalendarULTable .row
+{
+    overflow: hidden;
+    zoom: 1;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #B3B3B3;
+    height: auto;
+    padding-top: 2px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+}
+/*データ行内の各列*/
+.CalendarULTable .row ul li
+{
+    font-family: 'ＭＳ Ｐゴシック' , Arial, sans-serif;
+    text-align:center;
+    margin: 0px;
+    padding:0px;
+    float: left;
+    font-size: 11px;
+    display:inline;
+}
+ 
+
+/*ヘッダー行====================*/
+.CalendarULTable .headerRow
+{
+    overflow: hidden;
+    zoom: 1;
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+    border-bottom-color: #999999;
+    padding-top: 5px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    background-image: url('../img/head_back_orange.jpg');
+    background-repeat: repeat-x;
+    color:#663300;
+    font-size:12px;
+    font-weight:bold;
+}
+ 
+.CalendarULTable .headerRow ul li
+{
+    font-family: 'ＭＳ Ｐゴシック' , Arial, sans-serif;
+    margin-left: 5px;
+    float: left;
+    font-size: 11px;
+     display:inline;
+}
+.CalendarULTable .headerRow ul li:after
+{
+    content:".";
+    display:block;
+    clear:both;
+    height:0px;
+    visibility:hidden;
+    font-size:0;
+}
+ 
+
+/*//ヘッダー行====================*/
+ 
+
+.CalendarULTable .numStyle
+{
+    cursor:pointer;
+    font-weight: bold;
+    color: #FF6600;
+}
+ 
+
+.CalendarULTable .numStyle:hover
+{
+    text-decoration:underline;
+    background-color: #F2DABF;
+}
+ 
+.CalendarULTable .numStyle_Select
+{
+    text-decoration:underline;
+    background-color: #F2DABF;
+}
+ 
+
+.CalendarULTable .monthStyle
+{
+    cursor:pointer;
+    
+}
+ 
+
+.CalendarULTable .monthStyle:hover
+{
+    text-decoration:underline;
+    background-color: #FF6600;
+}
+ 
+.CalendarULTable .monthStyle_Select
+{
+    text-decoration:underline;
+    background-color: #FF6600;
+}
+
+
+
+.Menu li
+{
+ margin-top:20px;   
+ border-bottom:1px dotted #87b92a;
+}
+
+
+
+
+/*========================================
+カード用UL
+ Umekou
+========================================*/
+ 
+.cardUL
+{
+    zoom: 1;
+    overflow: hidden;
+    
+    
+}
+/*clearfix*/
+.cardUL:after
+{
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0px;
+    visibility: hidden;
+    font-size: 0;
+}
+ 
+.cardUL li
+{
+    overflow:hidden;
+}
+ 
+
+ 
+/*liの中のUL*/
+.cardUL li ul
+{
+    zoom: 1;
+    overflow: hidden;
+}
+/*clearfix*/
+.cardUL li ul:after
+{
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0px;
+    visibility: hidden;
+    font-size: 0;
+}
+.cardUL li ul li
+{
+    float:left;
+    display:inline;
+    margin-right:10px;
+}
+ 

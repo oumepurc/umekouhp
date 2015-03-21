@@ -1,0 +1,69 @@
+﻿@model umekou.Controllers.ecoClubInfo
+@{
+    ViewBag.Title = "おうめこどもエコクラブ 入会申し込み内容の確認";
+    Layout = "~/Views/Shared/_LayoutEcoclubNoneMenu.cshtml";
+}
+
+        <div class="row">
+        <div class="span1"></div>
+            <div class="span7" >
+
+            　<h5>▼おうめこどもエコクラブ 入会申し込み内容の確認</h5>
+            </div>
+
+             <div class="span1"></div>
+
+            </div>
+
+            @* 確認内容*@
+             <div class="row" style="background-color:white;height:200px;padding-top:50px;border-top:1px solid black;">
+              <div class="span1"></div>
+            <div id="main" class="span7" >
+
+              <ul>
+                    <li>お子様の氏名・・・・<span style="font-weight:bold;background-color:Yellow;padding:2px;"> @Model.child_name</span><i class="icon-ok"></i></li>
+                  <li>ふりがな・・・・<span style="font-weight:bold;background-color:Yellow;padding:2px;"> @Model.child_name_furigana</span><i class="icon-ok"></i></li>
+                     <li>学年、年齢等・・・<span style="font-weight:bold;background-color:Yellow;padding:2px;">@Model.state</span><i class="icon-ok"></i></li>
+                      <li>電話番号・・・<span style="font-weight:bold;background-color:Yellow;padding:2px;">@Model.tel</span><i class="icon-ok"></i></li>
+                  <li>FAX・・・<span style="font-weight:bold;background-color:Yellow;padding:2px;">@Model.fax</span><i class="icon-ok"></i></li>
+                      <li>メールアドレス・・・<span style="font-weight:bold;background-color:Yellow;padding:2px;">@Model.email</span><i class="icon-ok"></i></li>
+                </ul>
+
+               <H6 style="color:crimson;">※上記の内容でよろしければ送信ボタンを押して下さい</H6>
+
+
+                <form action="@Url.Content("~/Ecoclub/Confirm")" method="post">
+                <input type="hidden" name="child_name" class="span3" value="@Model.child_name">
+                    <input type="hidden" name="child_name_furigana" class="span3" value="@Model.child_name_furigana">
+                <input type="hidden" class="span3" name="rdoState" value="@Model.rdoState">
+                 <input type="hidden" class="span3" name="school_name" value="@Model.school_name">
+                  <input type="hidden" class="span3" name="class_year" value="@Model.class_year">
+                    <input type="hidden" class="span3" name="hoikuen_name" value="@Model.hoikuen_name">
+                   <input type="hidden" class="span3" name="age" value="@Model.age">
+
+                <input type="hidden" class="span3" name="tel" value="@Model.tel">
+                    <input type="hidden" class="span3" name="fax" value="@Model.fax">
+                <input type="hidden" class="span3" name="email" value="@Model.email">
+                <button style="margin-top:20px;" type="submit" class="btn btn-warning">送信</button>
+   　　　　　　　</form>
+
+
+                
+            </div>
+             <div class="span1"></div>
+
+            </div>
+
+
+
+
+           
+
+
+        
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+﻿@CHARSET "UTF-8";
+/*==============================================================
+ 
+３カラムスタイル
+ 
+ 作成日： T.Ishimaru
+ 更新日：
+ 
+================================================================*/
+ 
+/*============================================================
+ベース部分
+============================================================*/
+.CardArea {
+    width:700px;
+    margin-top:0px;height:900px;background-color:#efeeef;
+    position: relative ;
+}
+
+.CardArea > div {
+    background: #CCC ;
+    height: 200px ;
+    position: absolute ;
+    width:326px ;
+}
+
+.CardArea > div[data-ss-colspan='2'] { width: 170px ; }
+
+.CardArea .ss-placeholder-child {
+    background: transparent ;
+    border: 1px dashed red;
+}

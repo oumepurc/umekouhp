@@ -1,0 +1,82 @@
+﻿@section css{
+  <link href="@Url.Content("~/Scripts/plugin/jquery.zrssfeed.css")" rel="stylesheet" type="text/css" />
+}
+@section script{
+
+
+
+    <script src="@Url.Content("~/Scripts/plugin/jquery.zrssfeed.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+
+     
+        $(document).ready(function () {
+            $('#test').rssfeed('http://umekou.jugem.jp/?mode=rss', {
+                limit: 5,
+                header: false,
+                dateformat: 'yyyy.MM.dd',
+                linktarget:'_blank',
+                content: false
+            });
+        });
+ </script>
+
+}
+<div style="border:1px solid silver;width:99%;height:360px;"></div>
+<div class="inner3Contents" style="margin-top:30px;">
+
+<div class="column1" style="width:470px;">
+  
+<div style="color: #87b92a;font-weight:bold;">UMEKOU BLOG--- 新着情報</div>
+<div id="test"></div>
+</div>
+
+<div class="column2" style="margin:0px;text-align:left;width:210px;margin-left:0px;">
+
+
+ @*=====================================
+    右メニュー部分
+    =====================================*@
+<ul class="Menu" style="margin-left:0px;text-align:center;">
+
+ <li style="border:none;margin:0px;"> 
+     <div style="background-color:#f6f4f4;border:1px dotted silver;width:200px;height:40px;font-size:10px;">
+     エコクラブリンク
+     </div>
+   </li>
+   <li style="border:none;"> 
+     <div style="background-color:#f6f4f4;border:1px dotted silver;width:200px;height:40px;font-size:10px;">
+     おうめタウンチップ
+     </div>
+   </li>
+    <li style="border:none;"> 
+     <img style="cursor:pointer;"
+     onclick='location.href = "http://www.facebook.com/umekou.since2010'
+                    onmouseover="this.src='@Url.Content("~/img/icon/facebook_.gif")'" 
+                    onmouseout="this.src='@Url.Content("~/img/icon/facebook.gif")'"
+                    src="@Url.Content("~/img/icon/facebook.gif")" alt="うめ校フェイスブック" />
+           
+  </li>
+  
+     <li style="border:none;">
+     @* <img style="cursor:pointer;"
+       onclick='location.href = "https://twitter.com/repo017";'
+                    onmouseover="this.src='@Url.Content("~/img/icon/twitter_.gif")'" 
+                    onmouseout="this.src='@Url.Content("~/img/icon/twitter.gif")'"
+                    src="@Url.Content("~/img/icon/twitter.gif")" alt="うめ校ツイッター" />*@
+<a class="twitter-timeline"  href="https://twitter.com/omeiitoko" data-widget-id="274663756934545408">omeiitoko からのツイート</a>
+<script>    !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");</script>
+
+     </li>
+
+
+</ul>
+
+</div>
+
+
+
+</div>
+
+
+
+

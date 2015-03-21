@@ -1,0 +1,573 @@
+﻿@{
+    ViewBag.Title = "おうめこどもエコクラブ | あつまれうめエコキッズ！";
+    Layout = "~/Views/Shared/_LayoutEcoclub.cshtml";
+}
+<script type="text/javascript">
+
+
+
+
+
+<!--
+    //=================================
+    //初期設定
+    //=================================
+    $(function () {
+        $(".preSchoolInputArea").hide();
+        $(".lblSchool").css("background-color", "Yellow");
+
+        //ラジオボタンの動作設定
+        $("[name='rdoState']").click(function () {
+            var state = $('input[name="rdoState"]:checked').val();
+            if (state == "school") {
+                //小学生
+                $(".preSchoolInputArea").hide();
+                $(".schoolInputArea").fadeIn("normal");
+                $(".lblSchool").css("background-color", "Yellow");
+                $(".lblPreSchool").css("background-color", "");
+            }
+            if (state == "preSchool") {
+            　　//未就学
+                $(".schoolInputArea").hide();
+                $(".preSchoolInputArea").fadeIn("normal");
+                $(".lblSchool").css("background-color", "");
+                $(".lblPreSchool").css("background-color", "Yellow");
+            }
+        });
+    });
+
+
+    function checkForm() {
+        childname = $('#child_name').val();
+        child_name_furigana = $('#child_name_furigana').val();
+        state = $('input[name="rdoState"]:checked').val();
+        tel = $('#tel').val();
+        school_name = $('#school_name').val();
+        class_year = $('#class_year').val();
+        age = $('#age').val();
+        email = $('#email').val();
+        chk_email = $('#chk_email').val();
+        //alert(childname + "---" + state + "---" + tel + "---" + school_name + "---" + class_year + "---" + age);
+
+
+        if (childname == null || jQuery.trim(childname) == "") {
+            alert("お子様のお名前をご入力ください");
+            $('#child_name').focus();
+            return false;
+        }
+        if (child_name_furigana == null || jQuery.trim(child_name_furigana) == "") {
+            alert("ふりがなをご入力ください");
+            $('#child_name_furigana').focus();
+            return false;
+        }
+
+
+
+        if (state == "school") {
+            if (school_name == null || jQuery.trim(school_name) == "") {
+                alert("学校名をご入力ください");
+                $('#school_name').focus();
+                return false;
+            }
+        }
+
+
+        if (tel == null || jQuery.trim(tel) == "") {
+            alert("電話番号をご入力ください");
+            $('#tel').focus();
+            return false;
+        }
+
+        if (email == null || jQuery.trim(email) == "") {
+            alert("メールアドレスをご入力ください");
+            $('#email').focus();
+            return false;
+        }
+
+        if (email != chk_email) {
+            alert("メールアドレスとメールアドレス（確認用）の内容に相違があります。");
+            $('#email').focus();
+            return false;
+        }
+        return true;
+
+    }
+
+
+
+    //
+    function checkFormToiawase(){
+        toiawase_name = $('#toiawase_name').val();
+        toiawase_tel = $('#toiawase_tel').val();
+        toiawase_email = $('#toiawase_email').val();
+        toiawase_chk_email = $('#toiawase_chk_email').val();
+        toiawase_txt = $('#toiawase_txt').val();
+
+
+        if (toiawase_name == null || jQuery.trim(toiawase_name) == "") {
+            alert("氏名をご入力ください");
+            $('#toiawase_name').focus();
+            return false;
+        }
+
+        if (toiawase_tel == null || jQuery.trim(toiawase_tel) == "") {
+            alert("電話番号をご入力ください");
+            $('#toiawase_tel').focus();
+            return false;
+        }
+
+        if (toiawase_email == null || jQuery.trim(toiawase_email) == "") {
+            alert("メールアドレスをご入力ください");
+            $('#toiawase_email').focus();
+            return false;
+        }
+
+        if (toiawase_email != toiawase_chk_email) {
+            alert("メールアドレスとメールアドレス（確認用）の内容に相違があります。");
+            $('#toiawase_email').focus();
+            return false;
+        }
+
+
+        if (toiawase_txt == null || jQuery.trim(toiawase_txt) == "") {
+            alert("問い合わせ内容をご入力ください");
+            $('#toiawase_txt').focus();
+            return false;
+        }
+        return true;
+
+    }
+// -->
+</script>
+
+
+ 
+
+
+
+ @*=====================================
+   おうめエコクラブとは？
+=====================================*@ @*タイトル--------------------------*@
+    <div class="row" style="padding-bottom: 5px; line-height: 120px;">
+        <div class="span1">
+        </div>
+        <div class="span7" style="text-align: left;">
+            <img src="@Url.Content("~/img/ecoclub/aboutEcoclub.gif")" alt="エコクラブとは？" />
+        </div>
+        <div class="span1">
+        </div>
+    </div>
+    @*説明--------------------------*@
+    <div class="row" style="padding-bottom: 5px;">
+        <div class="span1">
+        </div>
+        <div class="span1" style="text-align: left;">
+            <img src="@Url.Content("~/img/ecoclub/omeeco_tatemoji.gif")" alt="エコクラブ" />
+        </div>
+        <div class="span4" style="text-align: left;">
+            <p>
+                おうめこどもエコクラブは、うめ校（-※１）のプロジェクトのひとつです。活動資金は、助成金をもととしており、 参加費を営利目的でいただくことはありません（※2012年8月～2013年2月は青梅市市民提案協働事業の助成を受けています）
+            </p>
+            <p>
+                おうめこどもエコクラブでは、青梅のこどもたちの環境活動を支援する講座を開催しています。人と環境の関わりについての理解を、きちんと深めてもらえるように、楽しくて、
+                夢中になれる参加型の環境学習講座を用意しています
+            </p>
+            <p>
+                例えば、青梅の草花で手作りの地球を完成させたり、青梅産の大豆から豆腐を作ってみたり、ときには遠足へいったり…
+            </p>
+            <p>
+                青梅ならではの自然の恵みを受けながら、環境問題に対して自ら考え行動する力や、自然や環境を大切に思う心を育んでいきます。そうして地域社会の環境保全活動の環を広げる
+                ことを目指しています
+            </p>
+            <blockquote class="pull-left">
+                <p style="font-size: 11px;color:#f8b62b;">
+                    ※1 うめ校</p>
+                <small>うめ校 （正式名称：民立おうめ楽校(がっこう)） まちの価値観に共感し、地域と協働するライフスタイルを めざす若者のコミュニティです。2011年9月から活動を始め、
+                    青梅市やまちづくりに関心のある若者が運営している市民団体です。まちづくりワークショップや交流会など、活動は多岐にわたります。リアルな青梅の課題と、まちに寄り添いな
+                    がら活動したい若者をつなげています <cite>http://umekou.net</cite> </small>
+            </blockquote>
+        </div>
+        <div class="span1">
+        </div>
+    </div>
+  @*=====================================
+   おうめエコクラブとは？
+=====================================*@ 
+@*タイトル--------------------------*@
+    <div class="row" style="padding-bottom: 5px; line-height: 120px;">
+        <div class="span1">
+        </div>
+        <div class="span7" style="text-align: left;">
+            <img src="@Url.Content("~/img/ecoclub/tanjyou.gif")" alt="おうめこどもエコクラブはどうして誕生したの？" />
+        </div>
+        <div class="span1">
+        </div>
+    </div>
+    @*説明--------------------------*@
+    <div class="row" style="padding-bottom: 5px;">
+        <div class="span1">
+        </div>
+        <div class="span1" style="text-align: left;">
+            <img src="@Url.Content("~/img/ecoclub/omeeco_tatemoji.gif")" alt="エコクラブ" />
+        </div>
+        <div class="span4" style="text-align: left;">
+            2012年、おうめこどもエコクラブは、
+青梅のとある地域センターの職員さんの声からはじまりました
+<br />
+<br />
+「講座がマンネリ化している」
+<br />
+<br />
+長年、地域センターに勤めている職員さんの率直さ、
+素朴さにほっこりしながら会話をしていたところ、
+職員さんの口からこぼれた言葉
+<br />
+その言葉には、青梅の環境の良さに込められた希望や
+期待が込められている一方、
+<br />
+講座を作る担当の方が抱くもどかしさも感じました
+<br />
+その地域センターはみどりのカーテンや太陽光発電に
+取り組んでいる施設
+<br />
+<br />
+
+環境政策に特化した取り組みをたくさんの市民に知ってほしい。
+けれど、うまく活用しきれていない。
+市民に広く知らせるための講座も、今まで通りの内容ばかり
+<br />
+ <br />
+ <br />
+
+
+その現状を知り、民立おうめ楽校のスタッフとして、
+
+「なにかできることがあるはず」と考え始めました
+<br />
+ <br />
+
+
+
+そして、私には自分自身の体験から、
+強い疑念や芯のある使命感を持っています
+<br />
+ <br />
+
+「学校教育で、先生以外の大人から
+　何かを学ぶ機会はあるのだろうか。
+まちのことや、環境は、時代でかわりゆくものである。
+先生だけでなく、まちや環境を一番よく知る地域の人から、
+子どもたちの未来の環境を守るための学びを教わる機会があるのか。
+<br />
+特に、青梅は自然が豊かであるし、誇らしい財産である。
+子どもたちに、地域・環境・人からいろいろなことを学んでほしい。」
+
+ <br />
+ <br />
+ <br />
+
+
+私は、環境NPOにて子どもに環境教育を教える仕事をしています。
+自分の仕事を活かしながら、まちに貢献したいと思っています。
+<br />
+
+青梅の自然の豊かさ、子どもの笑顔。
+地域センターという場所、そして担当の方の想い。
+そしてこの度、青梅市協働事業の募集というきっかけがあり、
+民立おうめ楽校のひとつのプロジェクトとして、
+“おうめこどもエコクラブ”を発足することができました
+
+
+
+        </div>
+        <div class="span1">
+        </div>
+    </div>
+    @*=====================================
+   入会方法？
+=====================================*@ @*タイトル--------------------------*@
+    <div class="row" style="padding-bottom: 5px; line-height: 120px;">
+        <div class="span1">
+        </div>
+        <div class="span7" style="text-align: left;">
+            <img src="@Url.Content("~/img/ecoclub/nyukaiHouhou.gif")" alt="入会方法" />
+        </div>
+        <div class="span1">
+        </div>
+    </div>
+ @*=====================================
+   入会に関するお知らせ
+=====================================*@
+ @*説明--------------------------*@
+    <div class="row" style="padding-bottom: 5px;">
+        <div class="span1">
+        </div>
+        <div class="span1" style="text-align: left;">
+            <img src="@Url.Content("~/img/ecoclub/omeeco_tatemoji.gif")" alt="エコクラブ" />
+        </div>
+        <div class="span5" style="text-align: left;">
+            <p>
+                入会をご希望の方は下記の説明をお読みいただき、ページ下にある「入会申し込みフォーム」に必要事項をご記入し、送信下さい
+            </p>
+            <blockquote class="pull-left">
+                <small>おうめこどもエコクラブは、2013年から正式に入会受付を開始しますが、2012年の８月から、おうめこどもエコクラブの発足のため の準備講座を始めており、その講座で事前に入会の受付を開始しています
+                </small>
+            </blockquote>
+            <h5 style="color: #1071b9">
+                ＜対象＞</h5>
+            <p>
+               <strong style="background-color:Yellow;">青梅市在住</strong>の幼児（3歳）から小学６年生まで<br />
+                ※原則、小学生未満のご参加は講座への保護者同伴を、小学１、２年生のご参加は、保護者の方の送り迎えをお願いしています（遠足の場合などは例外あり）
+            </p>
+            <h5 style="color: #1071b9">
+                ＜講座開催日時＞</h5>
+            <p>
+                ２ヶ月に１回(４・６・８・10・12・２月） 第３土曜日 10:00～12:00
+                <br />
+                ※場合により、日時変更あり
+            </p>
+            <h5 style="color: #1071b9">
+                ＜講座開催場所＞</h5>
+            <p>
+                主に青梅市内の市民センター
+                <br />
+                ※青梅市外の課外講座もあります
+            </p>
+            <h5 style="color: #1071b9">
+                ＜費用について＞</h5>
+            <p>
+                入会無料<br />
+                実費が必要な場合のみ、交通費や材料費などを負担いただきます
+                <br />
+                ※500円程度
+            </p>
+            <h5 style="color: #1071b9">
+                ＜退会方法＞</h5>
+            <p>
+                お問い合わせよりご連絡下さい
+            </p>
+            <h5 style="color: #1071b9">
+                ＜入会継続＞</h5>
+            <p>
+                毎年度、入会申し込みを更新する予定です
+            </p>
+            <h5 style="color: #1071b9">
+                ＜個人情報について＞</h5>
+            <p>
+                個人情報は、おうめこどもエコクラブに関するお知らせのみに利用し、他団体・講座などには公開いたしません
+            </p>
+            <h5 style="color: #1071b9">
+                ＜入会特典＞</h5>
+            <ul>
+                <li>おうめこどもエコクラブの講座の優先受付</li>
+                <li>講座開催案内の受信</li>
+                <li>全国のこどもエコクラブ（※3）と交流</li>
+            </ul>
+            <blockquote class="pull-left">
+                <p style="font-size: 11px;">
+                    ※3 こどもエコクラブ</p>
+                <small>一見ありきたりな名前の「エコクラブ」ですが、実は“こどもエコクラブ”という全国組織があります。 その組織に、青梅市のこどもエコクラブとして登録していきます<br />
+                    【こどもエコクラブHP】<br />
+                    <cite>http://www.j-ecoclub.jp/guide/index.html</cite> </small>
+            </blockquote>
+            <h5 style="color: #1071b9">
+                ＜その他＞</h5>
+            <p>
+                ご入会者の方については、毎回の講座への参加義務はありません
+            </p>
+
+
+             @*=====================================
+               入会フォーム
+            =====================================*@
+
+@*            @using (Ajax.BeginForm(
+    "DispCountDataCalendar",
+    new AjaxOptions()
+    {
+        UpdateTargetId = "result_countDataCalendar",
+        LoadingElementId = "loading",
+        OnSuccess = "",
+        OnComplete = ""
+    }
+    ))
+{  
+    <input type="hidden" name="start_date" id="start_date" value="" />
+    <input type="hidden" name="end_date" id="end_date" value="" />
+    //送信
+    <input type='submit' style="display:none;" name="dispCountInfoBtn" id="dispCountInfoBtn" />                    
+}
+*@
+            <h4 style="margin-top:60px;">
+                入会申し込みフォーム</h4>
+            <p>
+                お申し込み後、メールにて事務局より案内メールを差し上げます
+                <br /><span style="margin-left:5px; color:red;font-size:smalle;">
+                    ※oume.purc@gmail.comからのメールが受信できるようお願いいたします。
+                </span></p>
+            
+            <form action="@Url.Content("~/Ecoclub/Form")" method="post">
+                <label>
+                    お子様の氏名
+                </label>
+                <input type="text" id="child_name" name="child_name" class="span3" placeholder="入力欄" />
+
+                <label>
+                    ふりがな
+                </label>
+                <input type="text" id="child_name_furigana" name="child_name_furigana" class="span3" placeholder="入力欄" />
+                @* 学年、年齢*@
+                <p>
+                    <label class="lblSchool radio  inline">
+                        <input type="radio" name="rdoState" id="rdoSchool" value="school" checked />
+                        小学生
+                    </label>
+                    <label class="lblPreSchool radio  inline">
+                        <input type="radio" name="rdoState" id="rdoPreSchool" value="preSchool" />
+                        未就学
+                    </label>
+                </p>
+                <p class="schoolInputArea" style="height:100px;">
+                    <label>
+                        学校名
+                    </label>
+                    <input type="text" id="school_name" class="span3" name="school_name" placeholder="入力欄" style="ime-mode:active;" />
+                    <select name="class_year" id="class_year" class="class_year input-small">
+                        <option>1年生</option>
+                        <option>2年生</option>
+                        <option>3年生</option>
+                        <option>4年生</option>
+                        <option>5年生</option>
+                        <option>6年生</option>
+                    </select>
+                </p>
+                <p class="preSchoolInputArea" style="height:100px;">
+                    <label>
+                        保育園名/幼稚園名
+                    </label>
+                    <input type="text" id="hoikuen_name" class="span3" name="hoikuen_name" placeholder="入力欄" style="ime-mode:active;" />
+                    <br />
+                    <select id="age" name="age" class="class_age span1">
+                        @*  <option>1歳</option>
+                    <option>2歳</option>*@
+                        <option>3歳</option>
+                        <option>4歳</option>
+                        <option>5歳</option>
+                        <option>6歳</option>
+                    </select>
+
+                </p>
+                <label>
+                    電話番号<span style="margin-left:10px; color:red;font-size:smaller;">※連絡のとれる番号でお願いいたします</span>
+                </label>
+                <input type="text" id="tel" class="span2" name="tel" style="ime-mode:disabled;">
+                <label>
+                    FAX<span style="margin-left:10px; color:gray;font-size:smaller;">※あればお願いいたします</span>
+                </label>
+                <input type="text" id="fax" class="span2" name="fax" style="ime-mode:disabled;">
+                <label>
+                    メールアドレス
+                </label>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-envelope"></i></span>
+                        <input class="span3" id="email" name="email" type="text" style="ime-mode:disabled;" />
+                    </div>
+                </div>
+
+                <label>
+                    メールアドレス（確認用）
+                </label>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-envelope"></i></span>
+                        <input class="span3" id="chk_email" name="chk_email" type="text" style="ime-mode:disabled;" />
+                    </div>
+                </div>
+
+                <button style="margin-top:20px;" onclick="return checkForm();" type="submit" class="btn btn-warning">
+                    内容確認
+                </button>
+            </form>
+
+
+            
+
+
+
+
+
+        </div>
+        
+    </div>
+
+
+    @*=====================================
+   お問い合わせ
+=====================================*@ 
+@*タイトル--------------------------*@
+    <div class="row" style="padding-bottom: 5px; line-height: 120px;">
+        <div class="span1">
+        </div>
+        <div class="span7" style="text-align: left;">
+            <img src="@Url.Content("~/img/ecoclub/otoiawase.gif")" alt="お問い合わせ" />
+        </div>
+        <div class="span1">
+        </div>
+    </div>
+ @*説明--------------------------*@
+    <div class="row" style="padding-bottom: 5px;">
+        <div class="span1">
+        </div>
+        <div class="span1" style="text-align: left;">
+            <img src="@Url.Content("~/img/ecoclub/omeeco_tatemoji.gif")" alt="エコクラブ" />
+        </div>
+        <div class="span4" style="text-align: left;">
+            <p>
+            下記のフォームからお気軽にお問い合わせください
+                <span style="margin-left:5px; color:red;font-size:smalle;">
+                    <br /> ※事務局で確認後、返信メールを差し上げます。oume.purc@gmail.comからのメールが受信できるようお願いいたします。
+                </span>
+            </p>
+             @*=====================================
+               お問い合わせフォーム
+            =====================================*@
+
+            <form action="@Url.Content("~/Ecoclub/FormToiawase")" method="post">
+            <label>
+               氏名</label>
+            <input type="text" id="toiawase_name" name="toiawase_name" class="span2" style="ime-mode:active;" />
+            <label>
+                電話番号</label>
+            <input type="text" id="toiawase_tel" class="span2" name="toiawase_tel" style="ime-mode:disabled;" />
+           <label>
+                メールアドレス</label>
+                <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-envelope"></i></span>
+                    <input class="span3" id="toiawase_email" name="toiawase_email"   type="text" style="ime-mode:disabled;" />
+                </div>
+            </div>
+
+            <label>
+             メールアドレス（確認用）
+            </label>
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-envelope"></i></span>
+                    <input class="span3" id="toiawase_chk_email"  type="text" style="ime-mode:disabled;" />
+                </div>
+            </div>
+          
+            <label style="margin-top:10px;">
+               お問い合わせ内容</label>
+            <textarea class="span5" rows="9" id="toiawase_txt" name="toiawase_txt" style="ime-mode:active;"></textarea>
+            
+            <button style="margin-top:20px;" onclick="return checkFormToiawase();" type="submit" class="btn btn-warning">
+                内容確認</button>
+            </form>
+        </div>
+        <div class="span1">
+        </div>
+    </div>
+</div>

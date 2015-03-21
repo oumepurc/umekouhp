@@ -1,0 +1,214 @@
+﻿ 
+ @{
+     
+
+     
+ }
+   <script src="@Url.Content("~/Scripts/MicrosoftAjax.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/MicrosoftMvcAjax.js")" type="text/javascript"></script>
+     <script src="@Url.Content("~/Scripts/MicrosoftMvcValidation.js")" type="text/javascript"></script>
+
+      <link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css")" rel="stylesheet" type="text/css" />
+      <link href="@Url.Content("~/Content/Card_Style.css")" rel="stylesheet" type="text/css" />
+
+ <script src="@Url.Content("~/Scripts/plugin/signalr/jquery-1.8.3.js")" type="text/javascript"></script>
+ <script src="@Url.Content("~/Scripts/plugin/signalr/json2.js")" type="text/javascript"></script>
+ <script src="@Url.Content("~/Scripts/plugin/signalr/jquery.signalR-1.1.2.js")" type="text/javascript"></script>
+ <script src="@Url.Content("~/signalr/hubs")" type="text/javascript"></script>
+
+ <script src="@Url.Content("~/Scripts/plugin/signalr/jquery-ui-1.10.3.min.js")" type="text/javascript"></script>
+ <script src="@Url.Content("~/Scripts/plugin/ckeditor/ckeditor.js")" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/javascript">
+
+
+
+    if (document.all) {
+        window.attachEvent("onload", function () {
+            initProcess();
+        });
+    }
+    else {
+        window.addEventListener("load", function () {
+            initProcess();
+        }, false);
+    }
+
+
+
+    function initCKEDITOR()
+    {
+          CKEDITOR.config.height = '450px'; //高さ
+
+         CKEDITOR.config.enterMode = CKEDITOR.ENTER_BR;
+        CKEDITOR.config.shiftEnterMode = CKEDITOR.ENTER_P
+      
+
+     CKEDITOR.on( 'dialogDefinition', function( ev )
+   {
+      var dialogName = ev.data.name;
+      var dialogDefinition = ev.data.definition;
+      ev.data.definition.resizable = CKEDITOR.DIALOG_RESIZE_NONE;
+
+      if ( dialogName == 'link' )
+
+      {
+       var targetTab = dialogDefinition.getContents('target');
+        var targetField = targetTab.get('linkTargetType');
+        targetField['default'] = '_blank';
+
+  
+         var infoTab = dialogDefinition.getContents( 'info' );
+          dialogDefinition.removeContents( 'advanced' );
+
+      }
+
+      if ( dialogName == 'image' )
+      {
+         dialogDefinition.removeContents( 'Link' );
+         dialogDefinition.removeContents( 'advanced' );
+         var infoTab = dialogDefinition.getContents( 'info' );
+         infoTab.remove('browse');
+         infoTab.remove( 'txtBorder' );
+         infoTab.remove( 'txtHSpace' );
+         infoTab.remove( 'txtVSpace' );
+         infoTab.remove( 'cmbAlign' );
+          infoTab.remove( 'txtHeight');         
+         infoTab.remove( 'txtWidth' );   
+         infoTab.remove( 'ratioLock' ); 
+         infoTab.remove( 'txtAlt' ); 
+         //infoTab.remove('htmlPreview');
+  
+      }
+   });
+
+  
+
+
+        CKEDITOR.config.filebrowserUploadUrl = "@Url.Content("~/Top/UploadImage")";
+        CKEDITOR.config.removeDialogTabs = 'link:upload;link:advanced;image:Link;image:advanced';
+        CKEDITOR.config.toolbar = [
+         ['Font','FontSize']
+         ,
+ ['Bold','Italic','Underline','Strike','-','TextColor','BGColor','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','NumberedList','-','BulletedList','-','Outdent','Indent','-','Blockquote']
+ 
+ ,['RemoveFormat']
+
+ ,['Image']
+  ,['Smiley']
+   ,['Link','Unlink']
+ ,
+
+
+
+	{ name: 'tools', items:[ 'Maximize' ] }
+];
+
+
+
+
+
+
+
+    }
+    //==================================================
+    //初回処理
+    //==================================================
+    function initProcess() {
+
+        initCKEDITOR();
+
+
+         var html='@Html.Raw(ViewBag.htmlData.Replace( "\n", "" ))';
+         CKEDITOR.instances.editor1.setData(html);
+
+
+        var dataHub = $.connection.umekouHub;
+        $.connection.hub.start().done(function () {
+           
+           //登録ボタンクリック時
+            $('#btnRegist').click(function () {
+                 //データ格納
+                 var edit_data =CKEDITOR.instances.editor1.getData();
+                 var data={
+                     datetime:"",
+                     edit_data:edit_data
+                 }
+               dataHub.server.send(data);
+
+                //編集内容リセット処理　TODO
+                $('#edit_data').val('').focus();
+            });
+
+            //更新ボタンクリック時
+            $('#btnUpdate').click(function () {
+                 //データ格納
+                 var edit_data =CKEDITOR.instances.editor1.getData();
+                 var data={
+                 　　
+                     datetime:"",
+                     edit_data:edit_data
+                 }
+               dataHub.server.update(data);
+
+                //編集内容リセット処理　TODO
+                $('#edit_data').val('').focus();
+
+
+
+            });
+        });
+    }
+
+
+
+</script>
+
+
+@*==============================================
+  AJAX登録、更新用　⇒すべてhidden
+==============================================*@
+@using (Ajax.BeginForm(
+    "addUpdateEditData",
+    new AjaxOptions()
+    {
+        UpdateTargetId = "",
+        LoadingElementId = "",
+        OnSuccess = "",
+        OnComplete = ""
+    }
+    ))
+{
+    <input type="hidden" name="edit_data" id="edit_data" value="" />                      @*コメントID*@
+    //送信
+    <input type='submit' style="display:none;" name="regBtn" id="regBtn" />                        
+}
+
+
+@*編集欄*@
+<textarea class="ckeditor" cols="80"  id="editor1" name="editor1" rows="10" ></textarea> 
+
+@if(ViewBag.isEditForUpdate == true )
+{
+    <input type="button" id="update_message" value="更新" />
+}
+else
+{
+    <input type="button" id="btnRegist" value="新規登録" />
+}
+
+
+
+
+
+@*登録ボタン*@
+@* <input type="button" id="btnRegist" value="登録" />*@
+
+
+ @*更新ボタン*@
+@* <input type="button" id="btnUpdate" value="更新" />*@

@@ -1,0 +1,278 @@
+﻿@charset "utf-8";
+
+/*last mod 110922 shigeru yokota*/
+
+/* reset & common */
+* {
+	margin:0;
+	padding:0;
+}
+html, body, #wraper {height: 100%;}
+body > #wraper {height: auto; min-height: 100%;}
+body {
+	font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','Verdana','Osaka','メイリオ', 'Meiryo', 'ＭＳ Ｐゴシック', 'MS P Gothic';
+	color: #000;
+	font-size:13px;
+	*font-size:small;
+	*font:x-small;
+	line-height:1.5em;
+}
+
+hr { display: none;}
+li { list-style: none;}
+a {
+	color: #000;
+	background: #FAF11A;
+	text-decoration: none;
+	outline: none;
+}
+a:hover {
+	background: #fff;
+}
+img {
+	border: 0;
+	line-height: 0;
+}
+#wrap {	
+	overflow:auto;
+	padding-bottom: 67px;
+	margin: 0 0 0 29px;
+	width: 931px;
+}  /* must be same height as the footer */
+
+/*  under_common */
+#side h1 {
+	text-indent: -9999px;
+	margin:  0 0 8px;
+}
+#side h1 a {
+	display: block;
+	width:192px;
+	height: 288px;
+	background: url(../images/h1_title.gif) no-repeat;
+}
+#main .topicpath {
+	font-size: 77%;
+	margin: 10px 0 0 0;
+	font-weight: normal;
+}
+
+/* content & side */
+#main {
+	width: 710px;
+	float: left;
+}
+#side {
+	width: 192px;
+	margin: 0 29px 0 0;
+	float:left;
+}
+
+#side ul.global {
+	margin:  0 0 18px;
+}
+
+*:first-child+html #side ul.global {
+	margin: 0 0 14px;
+}
+
+#side li {
+	width: 192px;
+}
+
+#side ul.global li,
+#side ul.sub li {
+	text-indent: -9999px;
+}
+#side ul.global li a {
+	display: block;
+	height: 38px;
+}
+#side ul.sub li a {
+	display: block;
+	height: 13px;
+}
+*:first-child+html #side ul.sub li.sm04 a {
+	margin: 5px 0;
+}
+#side ul.global li.gm01 a {	height: 39px; background: url(../images/gm01.gif) no-repeat;}
+#side ul.global li.gm02 a { background: url(../images/gm02.gif) no-repeat;}
+#side ul.global li.gm03 a {	background: url(../images/gm03.gif) no-repeat;}
+#side ul.global li.gm04 a {	background: url(../images/gm04.gif) no-repeat;}
+#side ul.global li.gm05 a {	background: url(../images/gm05.gif) no-repeat;}
+#side ul.global li.gm06 a {	background: url(../images/gm06.gif) no-repeat;}
+#side ul.global li.gm07 a {	height: 36px; background: url(../images/gm07.gif) no-repeat;}
+#side ul.global li.gm01 a:hover { background: url(../images/gm01.gif) no-repeat -192px 0;}
+#side ul.global li.gm02 a:hover { background: url(../images/gm02.gif) no-repeat -192px 0;}
+#side ul.global li.gm03 a:hover { background: url(../images/gm03.gif) no-repeat -192px 0;}
+#side ul.global li.gm04 a:hover { background: url(../images/gm04.gif) no-repeat -192px 0;}
+#side ul.global li.gm05 a:hover { background: url(../images/gm05.gif) no-repeat -192px 0;}
+#side ul.global li.gm06 a:hover { background: url(../images/gm06.gif) no-repeat -192px 0;}
+#side ul.global li.gm07 a:hover { background: url(../images/gm07.gif) no-repeat -192px 0;}
+
+#side ul.sub li.sm01 a { background: url(../images/sm01.gif) no-repeat;}
+#side ul.sub li.sm02 a { background: url(../images/sm02.gif) no-repeat;}
+#side ul.sub li.sm03 a { background: url(../images/sm03.gif) no-repeat;}
+#side ul.sub li.sm04 a { background: url(../images/sm04.gif) no-repeat;}
+/*#side ul.sub li.sm05 a { height:28px; background: url(../images/sm05.gif) no-repeat;}*/
+#side ul.sub li.sm05 a { display:none;}
+#side ul.sub li.sm06 a { background: url(../images/sm06.gif) no-repeat;}
+#side ul.sub li.sm01 a:hover { background: url(../images/sm01.gif) no-repeat -192px 0;}
+#side ul.sub li.sm02 a:hover { background: url(../images/sm02.gif) no-repeat -192px 0;}
+#side ul.sub li.sm03 a:hover { background: url(../images/sm03.gif) no-repeat -192px 0;}
+#side ul.sub li.sm04 a:hover { background: url(../images/sm04.gif) no-repeat -192px 0;}
+#side ul.sub li.sm05 a:hover { background: url(../images/sm05.gif) no-repeat -192px 0;}
+#side ul.sub li.sm06 a:hover { background: url(../images/sm06.gif) no-repeat -192px 0;}
+
+#side ul.sub li {
+	margin: 0 0 7px;
+}
+*html #side ul.sub li {
+	margin: 0 0 3px;
+}
+*:first-child+html #side ul.sub li {
+	margin: 0 0 3px;
+}
+
+/* footer */
+#footer {
+	position: relative;
+	margin-top: -67px; /* negative value of footer height */
+	height: 67px;
+	margin-left: 250px;
+	clear:both;
+}
+#footer div {
+	width:710px;
+	background: none;
+	margin: 0;
+	padding: 0 0 2px 0;
+}
+#footer div ul {
+	width: 100px;
+	height: 15px;
+	float: left;
+}
+#footer div li {
+	float: left;
+	margin: 0 0 0 4px;
+	text-indent: -9999px;
+}
+#footer div.media li a{
+	display:block;
+	width: 15px;
+	height: 15px;
+}
+#footer div li.twitter a{
+	background: url(../images/twitter_btn.gif) no-repeat;
+}
+#footer div li.twitter a:hover{
+	background: url(../images/twitter_btn.gif) -15px 0;
+}
+#footer div li.mixi a{
+	background: url(../images/mixi_btn.gif) no-repeat;
+}
+#footer div li.mixi a:hover{
+	background: url(../images/mixi_btn.gif) -15px 0;
+}
+
+#footer div p.pagetop {
+	float: right;
+	text-indent: -9999px;
+	width: 88px;
+	height: 18px;
+	background: none;
+}
+#footer p.pagetop a {
+	display: block;
+	width: 88px;
+	height: 18px;
+	background: url(../images/pagetop.gif) no-repeat;
+}
+#footer p.pagetop a:hover {
+	background: url(../images/pagetop.gif) no-repeat -88px 0;
+}
+
+#footer div.copy {
+	width: 710px;
+	background: url(../images/footer_dot.gif) repeat-x top;
+	padding: 18px 0 0;
+}
+*html #footer div.copy { 
+	margin: 2px 0 0;
+}
+#footer .copy ul { float:left; width:350px;}
+#footer .copy li { float:left; text-indent: -9999px; margin: 0 25px 0 0;} 
+#footer .copy ul li a { display:block; height:10px;}
+#footer .copy ul li.fm01 a { width:59px; background: url(../images/fm01.gif) no-repeat;}
+#footer .copy ul li.fm02 a { width:94px; background: url(../images/fm02.gif) no-repeat;}
+#footer .copy ul li.fm03 a { width:83px; background: url(../images/fm03.gif) no-repeat;}
+#footer .copy ul li.fm01 a:hover { background: url(../images/fm01.gif) no-repeat -59px 0;}
+#footer .copy ul li.fm02 a:hover { background: url(../images/fm02.gif) no-repeat -94px 0;}
+#footer .copy ul li.fm03 a:hover { background: url(../images/fm03.gif) no-repeat -83px 0;}
+#footer .copy p { 
+	float: right;
+	text-indent: -9999px;
+	width: 273px;
+	height: 12px;
+	background: url(../images/copy.gif) no-repeat;
+}
+
+/*Opera Fix*/
+#footer div ul:after,
+#box dl:after,
+#contents_wrap:after,
+#wrap: after,
+body:before {
+	content:"";
+	height:100%;
+	float:left;
+	width:0;
+	margin-top:-32767px;/
+}
+
+#footer .media:after,
+#footer div:after,
+#footer .copy:after,
+#footer ul:after {
+	clear:both;
+	content:" ";
+	display:block;
+	height:0;
+	visibility:hidden;
+}
+
+
+.clearfix:after { /*110922*/ 
+  content: ".";   
+  display: block;   
+  height: 0;   
+  clear: both;   
+  visibility: hidden;  
+}  
+  
+.clearfix { display: inline-table; }/*110922*/   
+
+/* Font Setting
+--------------------------------------------------
+CSSでのpercent指定で対応するpxサイズの早見表
+px = percent
+
+10 = 77
+11 = 85
+12 = 93 (was 93)
+13 = 100
+14 = 108 (was 107)
+15 = 116 (was 114)
+16 = 123.1 (was 122)
+17 = 131 (was 129)
+18 = 138.5 (was 136)
+19 = 146.5 (was 144)
+20 = 153.9 (was 152)
+21 = 161.6 (was 159)
+22 = 167
+23 = 174
+24 = 182
+25 = 189
+26 = 197
+*/

@@ -1,0 +1,79 @@
+﻿@charset "UTF-8";
+/*
+ * Example of zRSSFeed Styling
+ *
+ * Version: 1.1.9
+ * (c) Copyright 2011-2012, Zazar Ltd
+ *
+ */
+
+
+
+.rssFeed {
+	font-family:"Lucida Grande", "Lucida Sans Unicode", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", Helvetica, Arial, Verdana, sans-serif;
+	font-size: 90%;
+	font-weight:normal;
+	margin-top:7px;
+	margin-left:0px;
+}
+.rssFeed a
+{
+     padding-left:5px;
+     padding-right:0px;
+    font-family:"Lucida Grande", "Lucida Sans Unicode", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", Helvetica, Arial, Verdana, sans-serif;
+    font-size:10px;
+    font-weight:normal;
+    color: Dimgray;
+    text-decoration: none;
+}
+.rssFeed a:hover
+{
+   
+    background-color: yellow;
+    text-decoration: none;
+}
+
+.rssHeader { padding: 0.2em 0; }
+
+.rssBody {text-align:left;width:90% }
+.rssBody ul { list-style: none; }
+.rssBody ul, .rssRow, .rssRow h4, .rssRow p {
+	margin: 0;
+	padding: 0;
+}
+
+.rssRow { padding-top:10px; border-bottom:1px dotted Dimgray;clear:both; }
+.rssRow h4
+{
+    color:#87b92a!important;
+    font-size: 11px;
+    font-family: 'ＭＳ Ｐゴシック' , Arial, sans-serif;
+    margin:0px;
+    display:inline;
+}
+
+/*日付部分*/
+.rssRow div
+{
+    font-size: 11px;
+    color: #44B5AF;
+    margin: 0;
+    width: 70px;
+    display: inline;
+    float: left;
+}
+
+.odd
+{
+   
+}
+.even
+{
+   
+}
+
+.rssRow .rssMedia {
+	padding: 0.5em;
+	font-size: 1em;
+}
+

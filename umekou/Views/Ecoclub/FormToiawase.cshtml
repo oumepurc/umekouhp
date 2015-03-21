@@ -1,0 +1,63 @@
+﻿@model umekou.Controllers.ecoClubToiawase
+@{
+    ViewBag.Title = "おうめこどもエコクラブ 問い合わせ内容の確認";
+    Layout = "~/Views/Shared/_LayoutEcoclubNoneMenu.cshtml";
+}
+
+        <div class="row">
+        <div class="span1"></div>
+            <div class="span7" >
+
+            　<h5>▼おうめこどもエコクラブ 問い合わせみ内容の確認</h5>
+            </div>
+
+             <div class="span1"></div>
+
+            </div>
+
+            @* 確認内容*@
+             <div class="row" style="background-color:white;height:200px;padding-top:50px;border-top:1px solid black;">
+              <div class="span1"></div>
+            <div id="main" class="span7" >
+
+              <ul>
+                    <li>氏名・・・・<span style="font-weight:bold;background-color:Yellow;padding:2px;"> @Model.toiawase_name</span><i class="icon-ok"></i></li>
+                      <li>電話番号・・・<span style="font-weight:bold;background-color:Yellow;padding:2px;">@Model.toiawase_tel</span><i class="icon-ok"></i></li>
+                      <li>メールアドレス・・・<span style="font-weight:bold;background-color:Yellow;padding:2px;">@Model.toiawase_email</span><i class="icon-ok"></i></li>
+                      <li>問い合わせ内容・・・></li>
+                        <li><textarea class="span5" rows="9" readonly  background-color:Yellow;">@Model.toiawase_txt</textarea><i class="icon-ok"></i></li>
+                </ul>
+
+               <H6 style="color:crimson;">※上記の内容でよろしければ送信ボタンを押して下さい</H6>
+
+
+                <form action="@Url.Content("~/Ecoclub/ConfirmToiawase")" method="post">
+                <input type="hidden" name="toiawase_name" class="span3" value="@Model.toiawase_name">
+                <input type="hidden" class="span3" name="toiawase_tel" value="@Model.toiawase_tel">
+                 <input type="hidden" class="span3" name="toiawase_txt" value="@Model.toiawase_txt">
+                  <input type="hidden" class="span3" name="toiawase_email" value="@Model.toiawase_email">
+
+
+                <button style="margin-top:20px;" type="submit" class="btn btn-warning">送信</button>
+   　　　　　　　</form>
+
+
+                
+            </div>
+             <div class="span1"></div>
+
+            </div>
+
+
+
+
+           
+
+
+        
+
+
+
+
+
+

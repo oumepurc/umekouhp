@@ -1,0 +1,119 @@
+﻿@CHARSET "UTF-8";
+/*==============================================================
+ 
+３カラムスタイル
+ 
+ 作成日： T.Ishimaru
+ 更新日：
+ 
+================================================================*/
+ 
+/*============================================================
+ベース部分
+============================================================*/
+.inner3Contents
+{
+   
+   padding:0;
+ 
+}
+/*clearFix*/
+/*floatの要素をいれるので設定*/
+.inner3Contents:after
+{
+    content:".";
+    display:block;
+    clear:both;
+    height:0px;
+    visibility:hidden;
+    font-size:0;
+    
+    
+}
+ 
+ 
+ 
+ 
+ 
+/*============================================================
+  1カラム目
+============================================================*/
+.inner3Contents .column1
+{
+    padding:0px;
+    margin:0px;
+   color:Blue;
+    float:left;
+    display:inline;/*IE6*/
+    overflow:hidden;
+ 
+
+    
+}
+ 
+.inner3Contents .column1:after
+{
+    content:".";
+    display:block;
+    clear:both;
+    height:0px;
+    visibility:hidden;
+    font-size:0;
+    
+    
+}
+/*============================================================
+  2カラム目
+============================================================*/
+.inner3Contents .column2
+{
+    padding:0px;
+    margin:0px;
+ 
+    float:left;
+    display:inline;/*IE6*/
+    overflow:hidden;
+ 
+    
+}
+ 
+.inner3Contents .column2:after
+{
+    content:".";
+    display:block;
+    clear:both;
+    height:0px;
+    visibility:hidden;
+    font-size:0;
+    
+    
+}
+ 
+
+/*============================================================
+  コンテンツ
+============================================================*/
+.inner3Contents .column3
+{
+    padding:0px;
+    margin:0px;
+    float:left;
+    display:inline;/*IE6*/
+ 
+    overflow:hidden;
+  
+    
+   
+    
+}
+.inner3Contents .column3:after
+{
+    content:".";
+    display:block;
+    clear:both;
+    height:0px;
+    visibility:hidden;
+    font-size:0;
+    
+    
+}

@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+
+//        var _gaq = _gaq || [];
+//        _gaq.push(['_setAccount', 'UA-33069139-1']);
+//        _gaq.push(['_setDomainName', 'expressweb.jp']);
+//        _gaq.push(['_setAllowLinker', true]);
+//        _gaq.push(['_trackPageview']);
+
+//        (function () {
+//            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+//            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+//            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+//        })();
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+  m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+
+        ga('create', 'UA-40699100-1', 'umekou.net');
+        ga('send', 'pageview');
+
+    </script>
+    <title>@ViewBag.Title</title>@*CSS↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*@
+    <link href="@Url.Content("~/Content/bootstrap/css/bootstrap.css")" rel="stylesheet" type="text/css" />
+   <link href="@Url.Content("~/Content/Site_Ecoclub.css")" rel="stylesheet" type="text/css" />
+    @if (IsSectionDefined("css"))
+    {
+        @RenderSection("css", false);
+    }
+
+@*スクリプト↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*@
+    <script src="@Url.Content("~/Scripts/jquery-1.5.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.corner.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#main").corner("20px");
+        });
+
+    </script>
+    @if (IsSectionDefined("script"))
+    {
+        @RenderSection("script", false);
+    }
+</head>
+<body >
+    <div class="container" >
+    <div id="header">
+           
+        </div>
+
+        @*=====================================
+           ページ本体
+        =====================================*@
+        <div class="row">
+            @* ページ本体*@
+            <div id="main" class="span9" style="border: 1px solid black;background-color:#f8b62b;overflow:hidden;">
+                @*　ヘッダー部分*@
+<div class="row" style="height: 250px; line-height: 250px;">
+
+    <div class="span5" style="">
+    <img  style="margin-left:50px;"  src="@Url.Content("~/img/ecoclub/header_photo.png")" alt="写真" />
+    </div>
+    <div class="span4" style="">
+        <img  style=""  src="@Url.Content("~/img/ecoclub/logo_ecoclub.png")" alt="おうめこどもエコクラブロゴ" />
+    </div>
+</div>
+@*　内容部分*@
+<div class="row" style="background-color: white;padding-bottom:20px;">
+    @*=====================================
+   タイトル部分
+=====================================*@
+ @*   <div class="row" style="padding-bottom: 5px; line-height: 100px">
+        <div class="span1">
+        </div>
+        <div class="span8" style="border-bottom: 1px solid black; text-align: right;">
+            <img src="@Url.Content("~/img/ecoclub/title_ecoclub.gif")" alt="おうめエコクラブ" />
+        </div>
+    </div>*@
+    @*=====================================
+   目次部分
+=====================================*@
+   @* <div class="row" style="padding-bottom: 5px;">
+        <div class="span1">
+        </div>
+        <div class="span8" style="text-align: right;">
+            <img src="@Url.Content("~/img/ecoclub/content.gif")" alt="コンテンツ" />
+        </div>
+    </div>*@
+        @*=====================================
+   メニュー部分
+=====================================*@
+
+     <div class="row" style="padding-bottom: 0px; line-height: 120px;">
+        <div class="span1">
+        </div>
+        <div class="span7" style="text-align: left;">
+           
+
+           @{
+               string currentController =ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.ToString(); 
+               string currentAction = ViewContext.Controller.ValueProvider.GetValue("action").RawValue.ToString();
+
+               string strClassAbout = "";
+               string strClassReason = "";
+               string strClassNyuukai = "";
+               string strClassToiawase = "";
+               switch(currentAction)
+               {
+                   case "About":
+                       strClassAbout = "active";
+                       break;
+                   case "Reason":
+                       strClassReason = "active";
+                       break;
+                   case "Nyuukai":
+                       strClassNyuukai = "active";
+                       break;
+                   case "Toiawase":
+                       strClassToiawase = "active";
+                       break;   
+                   
+               }
+               
+               
+               
+           }
+           <ul class="nav nav-list" style="margin-top:20px;">
+                <li class="@strClassAbout"><a href="@Url.Content("~/Ecoclub/About")"><i class="icon-home"></i> おうめこどもエコクラブとは？</a></li>
+                <li class="@strClassReason"><a href="@Url.Content("~/Ecoclub/Reason")"><i class="icon-book"></i> おうめこどもエコクラブはどうして誕生したの？</a></li>
+                <li><a TARGET="_blank" href="http://umekou.jugem.jp/?cid=5"><i class="icon-pencil"></i> 講座開催予定<span style="font-size:10px;color:Gray;margin-left:10px;">※別画面に飛びます</span></a></li>
+                <li><a TARGET="_blank" href="http://umekou.jugem.jp/?cid=5"><i class="icon-pencil"></i> 活動実績<span style="font-size:10px;color:Gray;margin-left:10px;">※別画面に飛びます</span></a></li>
+                 <li class="@strClassNyuukai"><a href="@Url.Content("~/Ecoclub/Nyuukai")"><i class="icon-envelope"></i> 入会方法</a></li>
+                  <li class="@strClassToiawase"><a href="@Url.Content("~/Ecoclub/Toiawase")"><i class="icon-envelope"></i> 問い合わせ</a></li>
+            </ul>
+        </div>
+        <div class="span1">
+        </div>
+    </div>
+
+                     @RenderBody()
+               
+
+                
+            </div>
+
+
+
+           @* 余白部分*@
+            <div class="span3"></div>
+        </div>
+
+
+        
+       
+        <div id="footer">
+        <div class="span9" style="text-align:center;">
+         Umekou since2010.All right reserved
+                    </div>
+           .</div>
+    </div>
+
+   @* <div class="page">
+        <div id="main" style="min-height: 760px; width: 700px; overflow: hidden;">
+          
+            <div  style="cursor:pointer;position:relative;top:80px;left:400px;"
+            onclick='location.href = "@Url.Action("Index", "Ecoclub", null, null)";'>
+                <img src="@Url.Content("~/img/ecoclub/logo_ecoclub.png")" alt="青梅エコクラブロゴ" />
+            </div>
+            <div style="background-color: White; width: 700px; height: 100%; margin-top: 120px;
+                padding-left: 50px; padding-top: 20px;">
+              
+            </div>
+        </div>
+    </div>*@
+</body>
+</html>

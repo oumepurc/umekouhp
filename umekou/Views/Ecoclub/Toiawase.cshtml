@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "お問い合わせ　おうめこどもエコクラブ ";
+    Layout = "~/Views/Shared/_LayoutEcoclub.cshtml";
+}
+<script type="text/javascript">
+
+
+
+
+
+<!--
+    //
+    function checkFormToiawase() {
+        toiawase_name = $('#toiawase_name').val();
+        toiawase_tel = $('#toiawase_tel').val();
+        toiawase_email = $('#toiawase_email').val();
+        toiawase_chk_email = $('#toiawase_chk_email').val();
+        toiawase_txt = $('#toiawase_txt').val();
+
+
+        if (toiawase_name == null || jQuery.trim(toiawase_name) == "") {
+            alert("氏名をご入力ください");
+            $('#toiawase_name').focus();
+            return false;
+        }
+
+        if (toiawase_tel == null || jQuery.trim(toiawase_tel) == "") {
+            alert("電話番号をご入力ください");
+            $('#toiawase_tel').focus();
+            return false;
+        }
+
+        if (toiawase_email == null || jQuery.trim(toiawase_email) == "") {
+            alert("メールアドレスをご入力ください");
+            $('#toiawase_email').focus();
+            return false;
+        }
+
+        if (toiawase_email != toiawase_chk_email) {
+            alert("メールアドレスとメールアドレス（確認用）の内容に相違があります。");
+            $('#toiawase_email').focus();
+            return false;
+        }
+
+
+        if (toiawase_txt == null || jQuery.trim(toiawase_txt) == "") {
+            alert("問い合わせ内容をご入力ください");
+            $('#toiawase_txt').focus();
+            return false;
+        }
+        return true;
+
+    }
+
+
+// -->
+</script>
+  @*=====================================
+   お問い合わせ
+=====================================*@ 
+@*タイトル--------------------------*@
+    <div class="row" style="padding-bottom: 5px; line-height: 120px;">
+        <div class="span1">
+        </div>
+        <div class="span7" style="text-align: left;">
+            <img src="@Url.Content("~/img/ecoclub/otoiawase.gif")" alt="お問い合わせ" />
+        </div>
+        <div class="span1">
+        </div>
+    </div>
+ @*説明--------------------------*@
+    <div class="row" style="padding-bottom: 5px;">
+        <div class="span1">
+        </div>
+        <div class="span1" style="text-align: left;">
+            <img src="@Url.Content("~/img/ecoclub/omeeco_tatemoji.gif")" alt="エコクラブ" />
+        </div>
+        <div class="span4" style="text-align: left;">
+            <p>
+            下記のフォームからお気軽にお問い合わせください
+                <span style="margin-left:5px; color:red;font-size:smalle;">
+                   <br /> ※事務局で確認後、返信メールを差し上げます。oume.purc@gmail.comからのメールが受信できるようお願いいたします。
+                </span>
+            </p>
+             @*=====================================
+               お問い合わせフォーム
+            =====================================*@
+
+            <form action="@Url.Content("~/Ecoclub/FormToiawase")" method="post">
+            <label>
+               氏名</label>
+            <input type="text" id="toiawase_name" name="toiawase_name" class="span2" style="ime-mode:active;" />
+            <label>
+                電話番号</label>
+            <input type="text" id="toiawase_tel" class="span2" name="toiawase_tel" style="ime-mode:disabled;" />
+           <label>
+                メールアドレス</label>
+                <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-envelope"></i></span>
+                    <input class="span3" id="toiawase_email" name="toiawase_email"   type="text" style="ime-mode:disabled;" />
+                </div>
+            </div>
+
+            <label>
+             メールアドレス（確認用）
+            </label>
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-envelope"></i></span>
+                    <input class="span3" id="toiawase_chk_email"  type="text" style="ime-mode:disabled;" />
+                </div>
+            </div>
+          
+            <label style="margin-top:10px;">
+               お問い合わせ内容</label>
+            <textarea class="span5" rows="9" id="toiawase_txt" name="toiawase_txt" style="ime-mode:active;"></textarea>
+            
+            <button style="margin-top:20px;" onclick="return checkFormToiawase();" type="submit" class="btn btn-warning">
+                内容確認</button>
+            </form>
+        </div>
+        <div class="span1">
+        </div>
+    </div>
