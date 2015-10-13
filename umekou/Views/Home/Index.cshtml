@@ -289,23 +289,14 @@ class="item w2" style="cursor:pointer;width:220px;background-color:White;height:
   </div>
 </li>
 <li>
-<div class="item w2" style="width:220px;background-color:White;height:200px;border:1px solid #C9C9CA;margin:0px;">
-    <div style="margin-left:15px;margin-top:15px;">
-    <img 
-    src="@Url.Content("~/img/card_contents/card_month_title.gif")" alt="今月の１枚 />
-    </div>
-    <div style="margin-left:15px;margin-top:5px;">
-    <a class="fancybox1" href="@Url.Content("~/img/card_contents/今月の一枚.jpg")"">
-     <img style="border:none;"
-    src="@Url.Content("~/img/card_contents/card_month2.jpg")" alt="今月の１枚" />
-    </a>
-    </div>
-    <div style="margin-left:25px;margin-top:5px;">
-     <img 
-    src="@Url.Content("~/img/card_contents/card_common.png")" alt="" />
-    </div>
-
-  </div>
+    <div onclick='var w=window.open();w.location.href = "@Url.Action("Index", "Pic", null, null)";'
+         class="item w2" style="cursor:pointer;width:220px;background-color:White;height:200px;border:1px solid #C9C9CA;margin:0px;">
+        <img style="margin-left:15px;margin-top:7px;"
+             src="@Url.Content("~/img/card_contents/card_month_title.gif")" alt="今月の１枚" />
+        <center><img style="margin-left:5px;margin-top:10px;"
+             src="@Url.Content("~/img/card_contents/card_month2.jpg")" alt="今月の１枚" /></center>
+    @*</div>*@
+</div>
 </li>
 <li>
 <div onclick='var w=window.open();w.location.href = "@Url.Action("Index", "Ecoclub", null, null)";' 
